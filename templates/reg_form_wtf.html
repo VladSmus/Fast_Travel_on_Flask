@@ -1,0 +1,90 @@
+<html>
+
+    <head></head>
+
+    <body>
+        <style>
+            body {
+                background: rgb(220, 77, 233);
+            }
+        </style>
+        <a href="{{ url_for('index') }}">Главная</a>
+        <a href="{{ url_for('users') }}">Пользователи</a>
+        <a href="{{ url_for('registration') }}">Зарегистрироваться</a>
+        <div>
+            <h2>Форма регистрации</h2> <!-- Заголовок формы регистрации -->
+            {% for field, errors in form.errors.items() %} <!-- Для высвечивания ошибок валидации -->
+                {{ ', '.join(errors) }}
+            {% endfor %}
+            <form method="POST"> <!-- Форма отправки данных методом POST -->
+                <div>
+                    {{ form.last_name.label }} {{ form.last_name() }} <!-- Поле ввода фамилии с меткой -->
+                </div>
+                <div>
+                    {{ form.name.label }} {{ form.name() }} <!-- Поле ввода имени с меткой -->
+                </div>
+                <div>
+                    {{ form.middle_name.label }} {{ form.middle_name() }} <!-- Поле ввода отчества с меткой -->
+                </div>
+                <div>
+                    {{form.pol.label}} <!-- Метка для выбора пола -->
+                    {% for subfield in form.pol %} <!-- Итерация по вариантам выбора пола -->
+                        <tr>
+                            <td>{{ subfield }}</td> <!-- Радиокнопка выбора пола -->
+                            <td>{{ subfield.label }}</td> <!-- Метка для радиокнопки -->
+                        </tr>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.age.label }} {{ form.age() }} <!-- Поле ввода возраста с меткой -->
+                </div>
+                <div>
+                    {{ form.from_city.label }} {{ form.from_city() }} <!-- Поле ввода из города с меткой -->
+                </div>
+                <div>
+                    {{ form.to_city.label }} {{ form.to_city() }} <!-- Поле ввода в город с меткой -->
+                </div>
+                <div>
+                    {{form.type_of_transport.label}} <!-- Метка для выбора вида транспорта -->
+                    {% for subfield in form.type_of_transport %} <!-- Итерация по вариантам выбора вида транспорта -->
+                        <tr>
+                            <td>{{ subfield }}</td> <!-- Радиокнопка выбора вида транспорта -->
+                            <td>{{ subfield.label }}</td> <!-- Метка для радиокнопки -->
+                        </tr>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{form.tariff.label}} <!-- Метка для выбора тарифа -->
+                    {% for subfield in form.tariff %} <!-- Итерация по вариантам выбора тарифа -->
+                        <tr>
+                            <td>{{ subfield }}</td> <!-- Радиокнопка выбора тарифа -->
+                            <td>{{ subfield.label }}</td> <!-- Метка для радиокнопки -->
+                        </tr>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{form.price.label}} <!-- Метка для выбора цены -->
+                    {% for subfield in form.price %} <!-- Итерация по вариантам выбора цены -->
+                        <tr>
+                            <td>{{ subfield }}</td> <!-- Радиокнопка выбора цены -->
+                            <td>{{ subfield.label }}</td> <!-- Метка для радиокнопки -->
+                        </tr>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.email.label }} {{ form.email() }} <!-- Поле ввода email с меткой -->
+                </div>
+                <div>
+                    {{ form.phone.label }} {{ form.phone() }} <!-- Поле ввода телефона с меткой -->
+                </div>
+                
+                
+                <div>
+                    {{ form.submit() }} <!-- Кнопка отправки формы -->
+                </div>
+            </form>
+        </div>
+    </body>
+    <img src="/static/RhnNSAGy0-o.jpg">
+</html>
+

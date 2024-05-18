@@ -1,0 +1,62 @@
+<html>
+
+    <head>      
+    </head>
+
+    <body>
+        <style>
+            body {
+                background: rgb(220, 77, 233);
+            }
+        </style>
+        <!-- Гиперссылки на страницы сайта -->
+        <a href="{{ url_for('index') }}">Главная</a>
+        <a href="{{ url_for('users') }}">Пользователи</a>
+        <a href="{{ url_for('registration') }}">Зарегистрироваться</a>
+        <!-- Заголовок страницы -->
+        <h1>Пользователи</h1>
+        <!-- Начало таблицы -->
+        <table border="1">
+            <!-- Заголовки столбцов таблицы -->
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Пол</th>
+                <th>Возраст</th>
+                <th>Из города</th>
+                <th>В город</th>
+                <th>Вид транспорта</th>
+                <th>Тариф</th>
+                <th>Цена</th>
+                <th>Активность</th>
+                <th>Эл. почта</th>
+                <th>Тел.</th>
+            </tr>
+            <!-- Цикл для каждого пользователя в списке пользователей -->
+            {% for user in users %}
+                <!-- Создание строки таблицы для каждого пользователя -->
+                <tr>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.middle_name }}</td>
+                    <td>{{ user.pol }}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.from_city }}</td>
+                    <td>{{ user.to_city }}</td>
+                    <td>{{ user.type_of_transport }}</td>
+                    <td>{{ user.tariff }}</td>
+                    <td>{{ user.price}}</td>
+                    {% if user.is_active %}
+                        <td>Активен</td>
+                    {% else %}
+                        <td>Не активен</td>
+                    {% endif %}
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone}}</td>
+                </tr>
+            {% endfor %}
+        </table>  
+        <img src="/static/airplane.jpg" width="1280" height="720" alt="Путешествие">
+    </body>
+</html>
